@@ -1,17 +1,18 @@
 <?php
-    $messege = $_POST['messege'];
+require '../model/connection.php';
+
+if($_POST['fullName'] && $_POST['email'] && $_POST['message']){
+    
     $email = $_POST['email'];
     $fullName = $_POST['fullName'];
+    $message = $_POST['message'];
 
-    //if($messege == ''){
-    //echo 'vvedite messege'
-    //exit();}
-
-    $dsn = 'mysql:host=localhost;dbname=testTaskDB';
-    $pdo = new PDO($dsn, 'root', '');
-
-    $sql = 'INSERT INTO feedBack(fullName, email, textMessege) VALUES(:fullName, :email, :messege)';
-    $query =  $pdo->prepare($sql);
-    $query->execute(['fullName' => $fullName],['email' => $email],['textMessege' => $messege]);
-    header('Location: /view/');
+    $sql = "INSERT INTO `feedBack`(`fullName`, `email`, `textMessege`)
+        VALUES(:fullName, :email, :message)";
+    $query =  $connect->prepare($sql);
+    $query->execute(['fullName' => $fullName,'email' => $email,'message' => $message]);
+    
+}
+   
+header('Location: /view/');
 ?>
