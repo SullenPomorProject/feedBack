@@ -14,8 +14,21 @@
         <button name="sendMessege" type="submit">Отправить</button>
     </form>
     
-    <h2 id='messages'></h2>
-    <br>
+    <?php
+        require_once '../model/connection.php';
+        echo '<table>';
+        $query = $connect->query('SELECT * FROM `feedBack` ORDER BY `idMessage` DESC');
+        while($row = $query->fetch(PDO::FETCH_ASSOC)){
+            echo "
+            <tr>
+                <td>".$row['fullName']."</td>
+                <td>".$row['email']."</td>
+                <td>".$row['textMessage']."</td>
+            </tr>";
+        }
+        echo '</table>';
+
+    ?>
 </body>
 
 </html>
