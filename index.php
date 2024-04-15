@@ -15,7 +15,7 @@
     </form>
     
     <?php
-        require_once '../model/connection.php';
+        require_once '../feedback2/model/connection.php';
         echo '<table>';
         $query = $connect->query('SELECT * FROM `feedBack` ORDER BY `idMessage` DESC');
         while($row = $query->fetch(PDO::FETCH_ASSOC)){
