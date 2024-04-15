@@ -17,3 +17,22 @@ form {
     float: left;
     margin-right: 5%;
 }
+
+td {
+    
+    background: #EFF0F3;
+    border: 2px solid #288e6c;
+    border-radius: 10px;
+    padding: 20px 10px;
+}
+
+tr {
+    width: 100%;
+    background: #2FCC9A;
+    border: 2px solid #288e6c;
+    border-radius: 10px;
+}
+
+table {
+    width: 100%;
+}
