@@ -5,7 +5,7 @@ use app\lib\database;
 use app\core\model;
 use PDO;
 
-class Main_model extends Model
+class Message_model extends Model
 {
     public $table = 'massages';
 
