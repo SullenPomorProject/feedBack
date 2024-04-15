@@ -9,18 +9,20 @@
 <body>
     <form id='inputForm' method="post">
         <input type="text" id="fullName" name="fullName" placeholder="ФИО">
-        <input type="email" id="email" name="email" autocomplite="off" placeholder="email">
+        <input type="email" id="email" name="email" autocomplite="on" placeholder="email">
         <input type="text" id="message" cols="30" rows="10" name="message" placeholder="Сообщение">
         <button name="sendMessege" type="submit">Отправить</button>
     </form>
     <h1>Сообщения</h1>
     <hr>
-    <table id="messages">
+    <table>
         <tr>
             <th>ФИО</th>
             <th>Почта</th>
             <th>Сообщение</th>
         </tr>
+    </table>
+    <table id="messages">
         <?php foreach($data as $value): ?>
             <tr>
                 <td><?php echo $value['fullName'] ?></td>

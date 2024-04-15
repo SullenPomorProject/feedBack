@@ -1,9 +1,9 @@
-document.getElementById('inputForm').addEventListener('sibmit', function (event){
+document.getElementById('inputForm').addEventListener('submit', function (event){
     event.preventDefault();
 
     const formData = new FormData(event.target);
     fetch(
-        'http://feedback2/main/action_index_insert', {
+        'http://feedback2/main/index_insert', {
         method: 'POST',
         body: formData
     })
@@ -11,14 +11,12 @@ document.getElementById('inputForm').addEventListener('sibmit', function (event)
         .then(data => {
             let messages = document.getElementById('messages');
 
-            let message = document.createElement('table');
+            let message = document.createElement('tr');
             message.className = 'message';
             message.innerHTML = 
-                `<tr>
-                    <td>${data.fullName}</td>
-                    <td>${data.email}</td>
-                    <td>${data.message}</td>
-                </tr>
+                `<td>${data.fullName}</td>
+                <td>${data.email}</td>
+                <td>${data.message}</td>
                 `;
             messages.prepend(message);
         })
