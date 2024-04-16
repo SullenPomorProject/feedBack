@@ -12,10 +12,10 @@ spl_autoload_register(function($class)
     }
 );
 
-use app\core\model;
-use app\core\controller;
-use app\core\view;
-use app\core\route;
+use App\Core\Model;
+use App\Core\Controller;
+use App\Core\View;
+use App\Core\Route;
 
 $route = new Route();
 

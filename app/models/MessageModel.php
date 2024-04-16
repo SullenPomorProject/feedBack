@@ -5,7 +5,7 @@ use App\Lib\Database;
 use App\Core\Model;
 use PDO;
 
-class Message_model extends Model
+class MessageModel extends Model
 {
     public $table = 'messages';
 

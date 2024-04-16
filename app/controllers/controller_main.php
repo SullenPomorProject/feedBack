@@ -1,13 +1,13 @@
 <?php
 
 use app\core\controller;
-use app\models\Message_model;
+use app\models\MessageModel;
 
 class Controller_main extends Controller
 {
     public function action_index()
     {
-        $messages = new Message_model;
+        $messages = new MessageModel;
         $data = $messages->get();
         $this->view->generate('index', $data);
     }

@@ -19,7 +19,7 @@ class Route
             $actionName = $routes[2];
         }
 
-        $modelName = $controllerName . '_model';
+        $modelName = $controllerName . 'Model';
         $controllerName = 'Controller_' . $controllerName;
         $actionName = 'action_' . $actionName;
 
