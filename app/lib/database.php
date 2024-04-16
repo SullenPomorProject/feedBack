@@ -11,6 +11,7 @@ class Database
     private $login = 'root';
     private $password = '';
     private $dbname = 'testTaskDB';
+    public $connection;
 
     public function __construct()
     {

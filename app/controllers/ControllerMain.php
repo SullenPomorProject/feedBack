@@ -7,8 +7,8 @@ class ControllerMain extends Controller
 {
     public function actionIndex()
     {
-        $messages = new MessageModel();
-        $data = $messages->get();
+        $messageModel = new MessageModel();
+        $data = $messageModel->get();
         $this->view->generate('index', $data);
     }
 
@@ -20,22 +20,22 @@ class ControllerMain extends Controller
 
         $email = $_POST['email'];
         $fullName = $_POST['fullName'];
-        $message = $_POST['message'];
-        $patternEmail = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/';
+        $messageContent = $_POST['message'];
+        $emailPattern = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/';
 
-        if (!preg_match($patternEmail, $email) || $fullName === null || $message === null) {
+        if (!preg_match($emailPattern, $email) || empty($fullName) || empty($messageContent)) {
             return;
         }
 
-        $array = [
+        $messageDetails  = [
             'fullName' => $fullName,
             'email' => $email,
-            'message' => $message,
+            'message' => $messageContent,
         ];
 
-        $messages = new MessageModel();
-        $messages->insert($array);
+        $messageModel = new MessageModel();
+        $messageModel->insert($messageDetails);
 
-        echo json_encode($array);
+        echo json_encode($messageDetails);
     }
 }

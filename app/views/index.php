@@ -28,9 +28,9 @@
  <table id="messages">
     <?php foreach($data as $value): ?>
       <tr>
-        <td><?php echo $value['fullName'] ?></td>
-        <td><?php echo $value['email'] ?></td>
-        <td><?php echo $value['textMessage'] ?></td>
+        <td><?php echo htmlspecialchars($value['fullName']) ?></td>
+        <td><?php echo htmlspecialchars($value['email']) ?></td>
+        <td><?php echo htmlspecialchars($value['textMessage']) ?></td>
       </tr>
     <?php endforeach; ?>
     </table>
