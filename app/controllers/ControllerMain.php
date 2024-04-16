@@ -14,7 +14,8 @@ class ControllerMain extends Controller
 
     public function actionIndexInsert()
     {
-        if (!isset($_POST['fullName']) || !isset($_POST['email']) || !isset($_POST['message'])) {
+        if (!isset($_POST['fullName']) || !isset($_POST['email']) ||
+        !isset($_POST['message'])) {
             return;
         }
 
@@ -23,7 +24,8 @@ class ControllerMain extends Controller
         $messageContent = $_POST['message'];
         $emailPattern = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/';
 
-        if (!preg_match($emailPattern, $email) || empty($fullName) || empty($messageContent)) {
+        if (!preg_match($emailPattern, $email) || empty($fullName) ||
+        empty($messageContent)) {
             return;
         }
 

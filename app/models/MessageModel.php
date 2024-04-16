@@ -8,20 +8,20 @@ use PDO;
 
 class MessageModel extends Model
 {
-    public $table = 'messages';
+    public $tableName = 'messages';
 
     public function get()
     {
         $database = new Database();
         $pdo = $database->connection;
         $sql = "SELECT * FROM feedback ORDER BY idMessage DESC";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute();
+        $statement = $pdo->prepare($sql);
+        $statement->execute();
 
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function insert($array = [])
+    public function insert($data = [])
     {
         $database = new Database();
         $pdo = $database->connection;
@@ -31,9 +31,9 @@ class MessageModel extends Model
 
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
-            'fullName' => $array['fullName'],
-            'email' => $array['email'],
-            'message' => $array['message']
+            'fullName' => $data['fullName'],
+            'email' => $data['email'],
+            'message' => $data['message']
         ]);
     }
 }

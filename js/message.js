@@ -1,4 +1,5 @@
-document.getElementById('inputForm').addEventListener('submit', async (event) => {
+document.getElementById('inputForm').addEventListener(
+    'submit', async (event) => {
     event.preventDefault();
 
     try {
