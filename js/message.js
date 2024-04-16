@@ -3,7 +3,7 @@ document.getElementById('inputForm').addEventListener('submit', (event) => {
 
     const formData = new FormData(event.target);
     fetch(
-        'http://feedback2/main/index_insert', {
+        'http://feedback2/Main/IndexInsert', {
         method: 'POST',
         body: formData
     })

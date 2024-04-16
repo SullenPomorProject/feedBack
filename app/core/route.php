@@ -6,7 +6,7 @@ class Route
 {
     public static function start()
     {
-        $controllerName = 'main';
+        $controllerName = 'Main';
         $actionName = 'index';
 
         $routes = explode('/', $_SERVER['REQUEST_URI']);
@@ -20,8 +20,8 @@ class Route
         }
 
         $modelName = $controllerName . 'Model';
-        $controllerName = 'Controller_' . $controllerName;
-        $actionName = 'action_' . $actionName;
+        $controllerName = 'Controller' . $controllerName;
+        $actionName = 'action' . $actionName;
 
         $modelFile = strtolower($modelName) . '.php';
         $modelPath = 'app/models/' . $modelFile;
