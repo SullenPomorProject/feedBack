@@ -1,58 +1,49 @@
 <?php
 
-namespace app\core;
+namespace App\Core;
 
 class Route
 {
     public static function start()
     {
-        $controller_name = 'main';
-        $action_name = 'index';
+        $controllerName = 'main';
+        $actionName = 'index';
 
         $routes = explode('/', $_SERVER['REQUEST_URI']);
         
-        if(!empty($routes[1]))
-        {
-            $controller_name = $routes[1];
+        if (!empty($routes[1])) {
+            $controllerName = $routes[1];
         }
 
-        if(!empty($routes[2]))
-        {
-            $action_name = $routes[2];
+        if (!empty($routes[2])) {
+            $actionName = $routes[2];
         }
 
-        $model_name = $controller_name.'_model';
-        $controller_name = 'controller_'.$controller_name;
-        $action_name = 'action_'.$action_name;
+        $modelName = $controllerName . '_model';
+        $controllerName = 'Controller_' . $controllerName;
+        $actionName = 'action_' . $actionName;
 
-        // echo "Model: $model_name <br>";
-		// echo "Controller: $controller_name <br>";
-		// echo "Action: $action_name <br>";
+        $modelFile = strtolower($modelName) . '.php';
+        $modelPath = 'app/models/' . $modelFile;
 
-        $model_file = strtolower($model_name).'.php';
-        $model_path = 'app/models/'. $model_file;
-
-        if(file_exists($model_path))
-        {
-            include $model_path;
+        if (file_exists($modelPath)) {
+            include $modelPath;
         }
 
-        $controller_file = strtolower($controller_name).'.php';
-        $controller_path = 'app/controllers/'. $controller_file;
+        $controllerFile = strtolower($controllerName) . '.php';
+        $controllerPath = 'app/controllers/' . $controllerFile;
         
-        if(!file_exists($controller_path))
-        {
-            echo "контроллера нет";
+        if (!file_exists($controllerPath)) {
+            echo "No Controller";
             return;
         }
-        include $controller_path;
+        include $controllerPath;
 
-        $controller = new $controller_name();
-        $action = $action_name;
+        $controller = new $controllerName();
+        $action = $actionName;
 
-        if(!method_exists($controller, $action))
-        {
-            echo "нет действия";
+        if (!method_exists($controller, $action)) {
+            echo "No action";
             return;
         }
         $controller->$action();

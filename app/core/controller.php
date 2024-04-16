@@ -1,19 +1,18 @@
 <?php
 
-namespace app\core;
+namespace App\Core;
 
-use app\core\view;
-
+use App\Core\View;
 class Controller
 {
     public $view;
     
-    function __construct()
+    public function __construct()
     {
         $this->view = new View();
     }
 
-    function action_index()
+    public function actionIndex()
     {
         
     }

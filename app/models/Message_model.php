@@ -1,19 +1,19 @@
 <?php
 
-namespace app\models;
-use app\lib\database;
-use app\core\model;
+namespace App\Models;
+use App\Lib\Database;
+use App\Core\Model;
 use PDO;
 
 class Message_model extends Model
 {
-    public $table = 'massages';
+    public $table = 'messages';
 
     public function get()
     {
-        $database = new DataBase;
+        $database = new Database();
         $pdo = $database->connection;
-        $sql = "SELECT * FROM feedBack ORDER BY idMessage DESC";
+        $sql = "SELECT * FROM feedback ORDER BY idMessage DESC";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
 
@@ -22,13 +22,17 @@ class Message_model extends Model
 
     public function insert($array = [])
     {
-        $database = new DataBase;
+        $database = new Database();
         $pdo = $database->connection;
         
-        $sql = "INSERT INTO `feedBack`(`fullName`, `email`, `textMessage`)
+        $sql = "INSERT INTO `feedback`(`fullName`, `email`, `textMessage`)
         VALUES(:fullName, :email, :message)";
 
         $stmt = $pdo->prepare($sql);
-        $stmt->execute(array('fullName' => $array['fullName'],'email' => $array['email'],'message' => $array['message']));
+        $stmt->execute([
+            'fullName' => $array['fullName'],
+            'email' => $array['email'],
+            'message' => $array['message']
+        ]);
     }
 }
