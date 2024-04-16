@@ -10,8 +10,8 @@
     <form id='inputForm' method="post">
         <input type="text" id="fullName" name="fullName" placeholder="ФИО">
         <input type="email" id="email" name="email" autocomplite="on" placeholder="email">
-        <input type="text" id="message" cols="30" rows="10" name="message" placeholder="Сообщение">
-        <button name="sendMessege" type="submit">Отправить</button>
+        <input type="text" id="message" name="message" placeholder="Сообщение">
+        <button name="sendMessege" id="submitButton" type="submit">Отправить</button>
     </form>
     <h1>Сообщения</h1>
     <hr>
