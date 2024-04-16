@@ -1,83 +1,94 @@
 /* Общие стили */
-body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f4f4f4;
+:root {
+  --font-family: 'Arial', sans-serif;
+  --background-color: #f4f4f4;
+  --form-background-color: #ffffff;
+  --button-color: #007bff;
+  --button-hover-color: #0056b3;
+  --border-color: #ddd;
+  --text-color: #333;
+ }
+ 
+ body {
+  font-family: var(--font-family);
+  background-color: var(--background-color);
   margin: 0;
   padding: 0;
-}
-
-/* Стили для формы */
-#inputForm {
+ }
+ 
+ /* Стили для формы */
+ #inputForm {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 20px auto;
   max-width: 600px;
   padding: 20px;
-  background-color: #ffffff;
+  background-color: var(--form-background-color);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-#inputForm input[type="text"],
-#inputForm input[type="email"] {
+ }
+ 
+ #inputForm input[type="text"],
+ #inputForm input[type="email"] {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-color);
   border-radius: 4px;
-}
-
-#inputForm button[type="submit"] {
+ }
+ 
+ #inputForm button[type="submit"] {
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: var(--button-color);
   color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-}
-
-#inputForm button[type="submit"]:hover {
-  background-color: #0056b3;
-}
-
-/* Стили для таблицы */
-table {
+ }
+ 
+ #inputForm button[type="submit"]:hover {
+  background-color: var(--button-hover-color);
+ }
+ 
+ /* Стили для таблицы */
+ table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
-}
-
-th, td {
+ }
+ 
+ th, td {
   padding: 10px;
   text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-
-th {
+  border-bottom: 1px solid var(--border-color);
+ }
+ 
+ th {
   text-align: center;
   background-color: #f2f2f2;
-}
-
-/* Стили для сообщений */
-#messages {
+ }
+ 
+ /* Стили для сообщений */
+ #messages {
   margin-top: 20px;
-}
-
-.message {
+ }
+ 
+ .message {
   background-color: #e6e6e6;
-}
-
-/* Стили для заголовка */
-h1 {
+ }
+ 
+ /* Стили для заголовка */
+ h1 {
   text-align: center;
   margin-top: 40px;
-  color: #333;
-}
-
-/* Стили для разделителя */
-hr {
+  color: var(--text-color);
+ }
+ 
+ /* Стили для разделителя */
+ hr {
   width: 80%;
   margin: 20px auto;
   border: none;
-  border-top: 1px solid #ddd;
-}
+  border-top: 1px solid var(--border-color);
+ }
+ 

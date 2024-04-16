@@ -23,13 +23,14 @@ class ControllerMain extends Controller
         $message = $_POST['message'];
         $patternEmail = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/';
 
-        if (!preg_match($patternEmail, $email) || $fullName == null || $message == null) {
+        if (!preg_match($patternEmail, $email) || $fullName === null || $message === null) {
             return;
         }
+
         $array = [
             'fullName' => $fullName,
             'email' => $email,
-            'message' => $message
+            'message' => $message,
         ];
 
         $messages = new MessageModel();
