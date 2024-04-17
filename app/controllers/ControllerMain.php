@@ -8,11 +8,11 @@ class ControllerMain extends Controller
     public function actionIndex()
     {
         $messageModel = new MessageModel();
-        $data = $messageModel->get();
+        $data = $messageModel->fetchMessages();
         $this->view->generate('index', $data);
     }
 
-    public function actionIndexInsert()
+    public function actionAddMessage()
     {
         if (!isset($_POST['fullName']) || !isset($_POST['email']) ||
         !isset($_POST['message'])) {
@@ -36,7 +36,7 @@ class ControllerMain extends Controller
         ];
 
         $messageModel = new MessageModel();
-        $messageModel->insert($messageDetails);
+        $messageModel->saveMessage($messageDetails);
 
         echo json_encode($messageDetails);
     }

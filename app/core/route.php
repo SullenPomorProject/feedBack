@@ -4,48 +4,48 @@ namespace App\Core;
 
 class Route
 {
-    public static function start()
+    public static function initialize()
     {
-        $controllerName = 'Main';
-        $actionName = 'index';
+        $currentController = 'Main';
+        $currentAction = 'index';
 
-        $routes = explode('/', $_SERVER['REQUEST_URI']);
+        $uriSegments = explode('/', $_SERVER['REQUEST_URI']);
         
-        if (!empty($routes[1])) {
-            $controllerName = $routes[1];
+        if (!empty($uriSegments[1])) {
+            $currentController = $uriSegments[1];
         }
 
-        if (!empty($routes[2])) {
-            $actionName = $routes[2];
+        if (!empty($uriSegments[2])) {
+            $currentAction = $uriSegments[2];
         }
 
-        $modelName = $controllerName . 'Model';
-        $controllerName = 'Controller' . $controllerName;
-        $actionName = 'action' . $actionName;
+        $modelClassName = $currentController . 'Model';
+        $controllerClassName = 'Controller' . $currentController;
+        $actionMethodName = 'action' . $currentAction;
 
-        $modelFile = strtolower($modelName) . '.php';
-        $modelPath = 'app/models/' . $modelFile;
+        $modelFileName = strtolower($modelClassName) . '.php';
+        $modelFilePath = 'app/models/' . $modelFileName;
 
-        if (file_exists($modelPath)) {
-            include $modelPath;
+        if (file_exists($modelFilePath)) {
+            include $modelFilePath;
         }
 
-        $controllerFile = strtolower($controllerName) . '.php';
-        $controllerPath = 'app/controllers/' . $controllerFile;
+        $controllerFileName = strtolower($controllerClassName) . '.php';
+        $controllerFilePath = 'app/controllers/' . $controllerFileName;
         
-        if (!file_exists($controllerPath)) {
-            echo "No Controller";
+        if (!file_exists($controllerFilePath)) {
+            echo "Controller not found";
             return;
         }
-        include $controllerPath;
+        include $controllerFilePath;
 
-        $controller = new $controllerName();
-        $action = $actionName;
+        $controllerInstance = new $controllerClassName();
+        $actionMethod = $actionMethodName;
 
-        if (!method_exists($controller, $action)) {
-            echo "No action";
+        if (!method_exists($controllerInstance, $actionMethod)) {
+            echo "Action not found";
             return;
         }
-        $controller->$action();
+        $controllerInstance->$actionMethod();
     }
 }

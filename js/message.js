@@ -4,7 +4,7 @@ document.getElementById('inputForm').addEventListener(
 
     try {
         const formData = new FormData(event.target);
-        const response = await fetch('http://feedback2/Main/IndexInsert', {
+        const response = await fetch('http://feedback2/Main/AddMessage', {
             method: 'POST',
             body: formData
         });

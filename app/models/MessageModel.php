@@ -10,7 +10,7 @@ class MessageModel extends Model
 {
     public $tableName = 'messages';
 
-    public function get()
+    public function fetchMessages()
     {
         $database = new Database();
         $pdo = $database->connection;
@@ -21,7 +21,7 @@ class MessageModel extends Model
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function insert($data = [])
+    public function saveMessage($data = [])
     {
         $database = new Database();
         $pdo = $database->connection;
@@ -29,8 +29,8 @@ class MessageModel extends Model
         $sql = "INSERT INTO `feedback`(`fullName`, `email`, `textMessage`)
         VALUES(:fullName, :email, :message)";
 
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([
+        $statement = $pdo->prepare($sql);
+        $statement->execute([
             'fullName' => $data['fullName'],
             'email' => $data['email'],
             'message' => $data['message']

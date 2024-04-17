@@ -19,4 +19,4 @@ use App\Core\Route;
 
 $route = new Route();
 
-$route->start();
+$route->initialize();
